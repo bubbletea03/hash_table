@@ -1,26 +1,23 @@
 /*
     한 노드가 key와 value로 이루어진
-    연결 리스트
+    연결 리스트.
  */
 public class Bucket {
     private Node headNode;
-    public int size = 0;
 
-    public Object get(int index) {
-        if (index >= size) {
-            throw new IndexOutOfBoundsException();
+    public int get(String key) {
+        Node node = findNode(key);
+        if (node == null) {
+            return -1; // 키를 못 찾은 경우
         }
-
-        Node theNode = headNode;
-        for (int i = 0; i < index; i++) {
-            theNode = theNode.nextNode;
-        }
-
-        return theNode;
+        return node.value;
     }
 
-    public Object remove(int index) {
-
+    public void remove(String key) {
+        Node node = findNode(key);
+        if (node != null) {
+            // TODO: 지우고 이전 노드랑 다음 노드 연결하는 식으로 구현 해야 됨
+        }
     }
 
     public void add(String key, int value) {
@@ -33,8 +30,18 @@ public class Bucket {
             Node lastNode = getLastNode();
             lastNode.nextNode = newNode;
         }
+    }
 
-        size++;
+    private Node findNode(String key) {
+        Node node = headNode;
+        while (node.nextNode != null) {
+            if (node.key == key) {
+                return node;
+            }
+            node = node.nextNode;
+        }
+
+        return null;
     }
 
     private Node getLastNode() {

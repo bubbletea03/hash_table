@@ -2,13 +2,19 @@
 
 public class MyLinkedList {
     private Node headNode;
+    public int size = 0;
 
     public Object get(int index) {
-        for (int i = 0; i < index; i++) {
-
+        if (index >= size) {
+            throw new IndexOutOfBoundsException();
         }
 
-        return new Object();
+        Node theNode = headNode;
+        for (int i = 0; i < index; i++) {
+            theNode = theNode.nextNode;
+        }
+
+        return theNode;
     }
 
     public void add(Object data) {
@@ -21,6 +27,8 @@ public class MyLinkedList {
             Node lastNode = getLastNode();
             lastNode.nextNode = newNode;
         }
+
+        size++;
     }
 
     private Node getLastNode() {

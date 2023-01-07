@@ -1,6 +1,8 @@
-// 연결 리스트 구현하기
-
-public class MyLinkedList {
+/*
+    한 노드가 key와 value로 이루어진
+    연결 리스트
+ */
+public class Bucket {
     private Node headNode;
     public int size = 0;
 
@@ -17,8 +19,12 @@ public class MyLinkedList {
         return theNode;
     }
 
-    public void add(Object data) {
-        Node newNode = new Node(data);
+    public Object remove(int index) {
+
+    }
+
+    public void add(String key, int value) {
+        Node newNode = new Node(key, value);
 
         if (headNode == null) {
             headNode = newNode;
@@ -42,10 +48,12 @@ public class MyLinkedList {
 }
 
 class Node {
-    public Object data;
+    public String key;
+    public int value; // value는 편의상 int로 하겠습니다.
     public Node nextNode;
 
-    public Node(Object data) {
-        this.data = data;
+    public Node(String key, int value) {
+        this.key = key;
+        this.value = value;
     }
 }

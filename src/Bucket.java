@@ -15,8 +15,16 @@ public class Bucket {
 
     public void remove(String key) {
         Node node = findNode(key);
-        if (node != null) {
-            // TODO: 지우고 이전 노드랑 다음 노드 연결하는 식으로 구현 해야 됨
+
+        if (node == null) {
+            return;
+        }
+
+        Node prevNode = findPrevNode(node);
+        if (prevNode == null) {
+            node = node.nextNode;
+        } else {
+            prevNode.nextNode = node.nextNode;
         }
     }
 
@@ -42,6 +50,20 @@ public class Bucket {
         }
 
         return null;
+    }
+
+    // 노드를 매개변수로 받아 이전 노드를 반환한다.
+    private Node findPrevNode(Node node) {
+        if (node == headNode) {
+            return null; // 이전 노드가 없으면 null 반환
+        }
+
+        Node prevNode = headNode;
+        while (prevNode.nextNode != node) {
+            prevNode = prevNode.nextNode;
+        }
+
+        return prevNode;
     }
 
     private Node getLastNode() {

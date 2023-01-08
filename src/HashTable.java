@@ -11,11 +11,31 @@
  */
 
 public class HashTable {
-    private int BUCKET_COUNT = 2000;
-    public HashTable() {
+    private Bucket[] buckets = new Bucket[2000];
+
+    // 키 값 조회
+    public int get(String key) {
+        return 0;
+    }
+
+    // 키 값 삭제
+    public void remove(String key) {
 
     }
-    public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+    // 키 값 삽입
+    public void insert(String key, int value) {
+
+    }
+
+    // 해시 함수 - 각각의 알파벳 아스키코드를 합하는 방식
+    private int hash(String str) {
+        int sum = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            sum += (int)ch;
+        }
+
+        return sum % 2000;
     }
 }

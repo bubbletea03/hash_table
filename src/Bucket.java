@@ -42,12 +42,12 @@ public class Bucket {
 
     private Node findNode(String key) {
         Node node = headNode;
-        do {
+        while (node != null) {
             if (node.key == key) {
                 return node;
             }
             node = node.nextNode;
-        } while (node != null);
+        }
 
         return null;
     }

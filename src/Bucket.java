@@ -22,7 +22,7 @@ public class Bucket {
 
         Node prevNode = findPrevNode(node);
         if (prevNode == null) {
-            node = node.nextNode;
+            headNode = node.nextNode;
         } else {
             prevNode.nextNode = node.nextNode;
         }
@@ -42,12 +42,12 @@ public class Bucket {
 
     private Node findNode(String key) {
         Node node = headNode;
-        while (node.nextNode != null) {
+        do {
             if (node.key == key) {
                 return node;
             }
             node = node.nextNode;
-        }
+        } while (node != null);
 
         return null;
     }

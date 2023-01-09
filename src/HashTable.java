@@ -15,12 +15,16 @@ public class HashTable {
 
     // 키 값 조회
     public int get(String key) {
-        return 0;
+        int index = hash(key);
+        int value = buckets[index].get(key);
+
+        return value;
     }
 
     // 키 값 삭제
     public void remove(String key) {
-
+        int index = hash(key);
+        buckets[index].remove(key);
     }
 
     // 키 값 삽입

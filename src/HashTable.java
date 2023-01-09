@@ -29,7 +29,13 @@ public class HashTable {
 
     // 키 값 삽입
     public void insert(String key, int value) {
+        int index = hash(key);
 
+        if (buckets[index] == null) {
+            buckets[index] = new Bucket();
+        }
+
+        buckets[index].add(key, value);
     }
 
     // 해시 함수 - 각각의 알파벳 아스키코드를 합하는 방식
